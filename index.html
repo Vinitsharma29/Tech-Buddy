@@ -3,22 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LifeLine Triage – Intelligent Hospital Queue System</title>
+    <title>LifeLine Triage - Smart Hospital Queue System</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="navbar">
-      <div class="container navbar__inner">
-        <div class="brand">
-          <div class="brand__logo" aria-hidden="true">+</div>
-          <div class="brand__text">
-            <div class="brand__name">LifeLine Triage</div>
-            <div class="brand__tag">Intelligent Hospital Queue System</div>
-          </div>
-        </div>
-        <nav class="navbar__nav" aria-label="Primary">
-          <a href="#entry">Patient Entry</a>
-          <a href="#queue">Queue</a>
-        </nav>
+    <header class="header">
+      <div class="container">
+        <h1 class="title">LifeLine Triage</h1>
+        <p class="subtitle">Smart Hospital Queue System (hackathon MVP)</p>
       </div>
     </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Patient Form</h2>
+        <form id="patientForm" class="form">
+          <div class="row">
+            <label>
+              Name
+              <input id="name" type="text" placeholder="e.g., Asha" required />
+            </label>
+
+            <label>
+              Age
+              <input id="age" type="number" min="0" max="120" placeholder="e.g., 45" required />
+            </label>
+          </div>
+
+          <div class="row">
+            <fieldset class="symptomsField">
+              <legend>Symptoms (select all that apply)</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="symptoms" value="Chest Pain" /> Chest Pain</label>
+                <label><input type="checkbox" name="symptoms" value="Fever" /> Fever</label>
+                <label><input type="checkbox" name="symptoms" value="Breathing Difficulty" /> Breathing Difficulty</label>
+                <label><input type="checkbox" name="symptoms" value="Injury" /> Injury</label>
+                <label><input type="checkbox" name="symptoms" value="Headache" /> Headache</label>
+              </div>
+            </fieldset>
