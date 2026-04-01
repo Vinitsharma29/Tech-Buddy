@@ -17,6 +17,7 @@ const topAlert = document.getElementById("topAlert");
 const clearBtn = document.getElementById("clearBtn");
 
 const ageInput = document.getElementById("age");
+const genderSelect = document.getElementById("gender");
 const durationValueInput = document.getElementById("durationValue");
 const durationUnitSelect = document.getElementById("durationUnit");
 const emergencyCheckbox = document.getElementById("emergencyCase");
@@ -26,7 +27,9 @@ let patients = [];
 function durationToMinutes(value, unit) {
   const n = Number(value);
   if (!Number.isFinite(n) || n < 0) return null;
-  return unit === "hours" ? n * 60 : n;
+  if (unit === "days") return n * 60 * 24;
+  if (unit === "hours") return n * 60;
+  return n;
 }
 
 function getSelectedSymptoms() {
@@ -76,12 +79,11 @@ function showEmergencyAlert(show) {
 }
 
 function setEmergencyMode(isEmergency) {
-  // As requested: when Emergency Case is checked, disable Age and Duration.
+  // When Emergency Case is checked, disable Age and Duration (as requested).
   ageInput.disabled = isEmergency;
   durationValueInput.disabled = isEmergency;
   durationUnitSelect.disabled = isEmergency;
 
-  // Optional: clear disabled fields so it's obvious they don't matter.
   if (isEmergency) {
     ageInput.value = "";
     durationValueInput.value = "";
@@ -105,7 +107,7 @@ function renderQueue() {
   if (sorted.length === 0) {
     queueBody.innerHTML = `
       <tr id="emptyRow">
-        <td colspan="5" class="muted">No patients yet. Add a patient from the form.</td>
+        <td colspan="6" class="muted">No patients yet. Add a patient from the form.</td>
       </tr>
     `;
     return;
@@ -128,6 +130,7 @@ function renderQueue() {
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td>${escapeHtml(p.name)}</td>
+      <td>${p.gender ? escapeHtml(p.gender) : "-"}</td>
       <td>${escapeHtml(symptomsText)}</td>
       <td>${p.score}</td>
       <td>${priorityText}${warning}</td>
@@ -141,6 +144,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const name = document.getElementById("name").value.trim();
+  const gender = genderSelect.value;
   const symptoms = getSelectedSymptoms();
   const severityRaw = document.getElementById("severity").value;
   const severity = severityRaw === "" ? NaN : Number(severityRaw);
@@ -176,6 +180,7 @@ form.addEventListener("submit", (e) => {
 
   patients.push({
     name,
+    gender: gender || "",
     age: emergencyChecked ? null : Number(ageInput.value),
     symptoms,
     durationMinutes: emergencyChecked ? null : durationToMinutes(durationValueInput.value, durationUnitSelect.value),
