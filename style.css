@@ -1,0 +1,245 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+  margin: 0;
+}
+
+/* Our container overrides Bootstrap's container so layout stays the same */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 14px 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 26px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 14px;
+  margin: 16px 0;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.form label {
+  display: block;
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.row > label,
+.row > fieldset,
+.row > div.actions {
+  flex: 1;
+  min-width: 240px;
+}
+
+input, select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.inline {
+  display: flex;
+  gap: 8px;
+}
+
+.inline input { flex: 1.2; }
+.inline select { flex: 0.8; }
+
+.symptomsField {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.symptomsField legend {
+  font-size: 13px;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.checks {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.checks label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.checks input {
+  width: auto;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 10px 12px;
+  border: 1px solid #222;
+  background: #222;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button.secondary {
+  background: #fff;
+  color: #222;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+.note {
+  margin: 0;
+  color: #555;
+  font-size: 12px;
+}
+
+.muted {
+  color: #666;
+  font-size: 13px;
+}
+
+.alert {
+  margin: 10px 0 12px;
+  padding: 10px;
+  border: 1px solid #ef4444;
+  background: #fff1f2;
+  color: #991b1b;
+  font-weight: bold;
+}
+
+.emergencyBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 13px;
+}
+
+.emergencyBox input {
+  width: auto;
+  margin: 0;
+}
+
+.queueHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.legend {
+  font-size: 12px;
+  color: #555;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 6px 0 10px;
+  border: 1px solid #999;
+}
+
+.dot.red { background: #ef4444; border-color: #ef4444; }
+.dot.yellow { background: #f59e0b; border-color: #f59e0b; }
+.dot.green { background: #10b981; border-color: #10b981; }
+.dot.emergency { background: #b91c1c; border-color: #b91c1c; }
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.table th {
+  background: #f7f7f7;
+}
+
+tr.priority-red td { background: #fff1f2; border-color: #f3c4c6; }
+tr.priority-yellow td { background: #fffbeb; border-color: #f1dfb2; }
+tr.priority-green td { background: #ecfdf5; border-color: #bfe9d5; }
+tr.priority-emergency td { background: #fecaca; border-color: #f87171; }
+
+.small {
+  font-size: 12px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.footer {
+  padding: 16px 0;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+@media (max-width: 576px) {
+  .checks { grid-template-columns: 1fr; }
+  .actions { justify-content: stretch; }
+  button { width: 100%; }
+}
